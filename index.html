@@ -6,54 +6,86 @@
 <title>Alexandre Construções & Serviços</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family:'Poppins',sans-serif;
 }
-
 body{
-    background:#0e0e0e;
+    background:#0f0f0f;
     color:#fff;
     scroll-behavior:smooth;
 }
 
+/* ================= HEADER COM BANNER ANIMADO ================= */
 header{
-    background:linear-gradient(135deg,#ffcc00,#f4c20d);
-    color:#000;
+    position:relative;
+    height:500px;
+    overflow:hidden;
+}
+header img{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    top:0;
+    left:0;
+    opacity:0;
+    animation:fade 12s infinite;
+}
+header img:nth-child(1){animation-delay:0s;}
+header img:nth-child(2){animation-delay:4s;}
+header img:nth-child(3){animation-delay:8s;}
+
+@keyframes fade{
+    0%{opacity:0;}
+    10%{opacity:1;}
+    33%{opacity:1;}
+    43%{opacity:0;}
+    100%{opacity:0;}
+}
+
+header .overlay{
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:80px 20px;
-    animation:fadeDown 1.2s ease;
+    padding:0 20px;
 }
-
-header h1{
-    font-size:45px;
+header .overlay h1{
+    font-size:50px;
+    text-shadow:2px 2px 8px #000;
 }
-
-header p{
-    margin:15px 0;
-    font-size:20px;
+header .overlay p{
+    font-size:22px;
+    margin:15px 0 30px;
+    text-shadow:1px 1px 5px #000;
 }
-
-.btn{
-    display:inline-block;
+header .overlay .btn{
     padding:15px 35px;
     background:#25D366;
     color:#fff;
     text-decoration:none;
     font-weight:bold;
     border-radius:50px;
+    box-shadow:0 0 15px rgba(0,0,0,0.5);
     transition:0.3s;
 }
-
-.btn:hover{
+header .overlay .btn:hover{
     transform:scale(1.1);
 }
 
+/* ================= SEÇÕES ================= */
 section{
     padding:80px 20px;
     max-width:1200px;
@@ -62,81 +94,92 @@ section{
     transform:translateY(50px);
     transition:1s;
 }
-
 section.show{
     opacity:1;
     transform:translateY(0);
 }
-
 h2{
     text-align:center;
-    margin-bottom:40px;
+    margin-bottom:50px;
     color:#ffcc00;
+    font-size:36px;
 }
 
+/* ================= CARDS COM HOVER ================= */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:25px;
 }
-
 .card{
     background:#1a1a1a;
     padding:25px;
     border-radius:15px;
     box-shadow:0 0 25px rgba(0,0,0,0.6);
-    transition:0.4s;
+    transition: transform 0.5s, box-shadow 0.5s;
 }
-
 .card:hover{
-    transform:translateY(-10px);
+    transform:scale(1.05) translateY(-10px);
+    box-shadow:0 0 40px rgba(255,204,0,0.7);
+}
+.card i{
+    font-size:30px;
+    color:#ffcc00;
+    margin-right:10px;
 }
 
+/* ================= GALERIA ================= */
 .gallery{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
 }
-
 .gallery img{
     width:100%;
     border-radius:15px;
     transition:0.4s;
 }
-
 .gallery img:hover{
     transform:scale(1.08);
 }
 
-.map iframe{
-    width:100%;
-    height:400px;
+/* ================= MAPA ================= */
+.map{
     border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 0 25px rgba(0,0,0,0.6);
+    margin-top:20px;
 }
 
-footer{
-    background:#000;
-    text-align:center;
-    padding:30px;
-}
-
+/* ================= BOTÃO FLUTUANTE ================= */
 .whatsapp-float{
     position:fixed;
-    bottom:20px;
-    right:20px;
+    bottom:25px;
+    right:25px;
     background:#25D366;
     padding:15px 25px;
     border-radius:50px;
     text-decoration:none;
     color:#fff;
     font-weight:bold;
-    box-shadow:0 0 15px rgba(0,0,0,0.5);
+    box-shadow:0 0 20px rgba(0,0,0,0.6);
+    transition:0.3s;
+}
+.whatsapp-float:hover{
+    transform:scale(1.1);
 }
 
-/* ANIMAÇÃO */
-@keyframes fadeDown{
-    from{opacity:0; transform:translateY(-50px);}
-    to{opacity:1; transform:translateY(0);}
+/* ================= FOOTER ================= */
+footer{
+    background:#000;
+    text-align:center;
+    padding:30px;
+    font-size:14px;
+}
+.highlight{
+    color:#ffcc00;
+    font-weight:600;
+    margin-bottom:10px;
 }
 
 </style>
@@ -144,36 +187,30 @@ footer{
 
 <body>
 
+<!-- ===== HEADER COM BANNER ANIMADO ===== -->
 <header>
-    <h1>Alexandre Construções & Serviços</h1>
-    <p>Manutenção • Remodelações • Construção Completa</p>
-    <a class="btn" href="https://wa.me/351931361545" target="_blank">
-        WhatsApp: 931 361 545
-    </a>
+    <img src="https://images.unsplash.com/photo-1581091870627-3a3b5b76b87d" alt="">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="">
+    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e" alt="">
+    <div class="overlay">
+        <h1>Alexandre Construções & Serviços</h1>
+        <p>Manutenção • Remodelações • Construção Completa • Obras com Contrato</p>
+        <a class="btn" href="https://wa.me/351931361545" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp: 931 361 545
+        </a>
+    </div>
 </header>
 
+<!-- ===== SERVIÇOS ===== -->
 <section>
 <h2>Serviços Profissionais</h2>
 <div class="grid">
-<div class="card">
-✔ Eletricidade<br>
-✔ Canalização<br>
-✔ Pintura<br>
-✔ Azulejos<br>
-✔ Telhados<br>
-✔ Remodelações
-</div>
-<div class="card">
-✔ Reparações Gerais<br>
-✔ Portas e Fechaduras<br>
-✔ Tomadas e Iluminação<br>
-✔ Construção de Casas<br>
-✔ Obras com Contrato<br>
-✔ Orçamentos Gratuitos
-</div>
+<div class="card"><i class="fas fa-bolt"></i> Eletricidade<br><i class="fas fa-paint-roller"></i> Pintura<br><i class="fas fa-tools"></i> Reparações Gerais<br><i class="fas fa-water"></i> Canalização<br><i class="fas fa-hammer"></i> Construção e Remodelações</div>
+<div class="card"><i class="fas fa-door-closed"></i> Portas e Fechaduras<br><i class="fas fa-lightbulb"></i> Iluminação e Tomadas<br><i class="fas fa-house"></i> Construção de Casas<br><i class="fas fa-file-signature"></i> Obras com Contrato<br><i class="fas fa-calculator"></i> Orçamentos Gratuitos</div>
 </div>
 </section>
 
+<!-- ===== GALERIA ===== -->
 <section>
 <h2>Galeria de Trabalhos</h2>
 <div class="gallery">
@@ -184,30 +221,31 @@ footer{
 </div>
 </section>
 
+<!-- ===== ÁREA DE ATENDIMENTO ===== -->
 <section>
-<h2>Atendimento em Porto</h2>
+<h2>Área de Atendimento</h2>
+<p class="highlight">Atendemos em Porto e região.</p>
 <div class="map">
-<iframe src="https://www.google.com/maps?q=Porto,Portugal&output=embed"></iframe>
+<iframe src="https://www.google.com/maps?q=Porto,Portugal&output=embed" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 </section>
 
+<!-- ===== FOOTER ===== -->
 <footer>
 © 2026 Alexandre Construções & Serviços | Porto - Portugal
 </footer>
 
 <a class="whatsapp-float" href="https://wa.me/351931361545" target="_blank">
-WhatsApp
+<i class="fab fa-whatsapp"></i> WhatsApp
 </a>
 
 <script>
 const sections = document.querySelectorAll("section");
-
 window.addEventListener("scroll", () => {
     sections.forEach(sec => {
         const top = window.scrollY;
         const offset = sec.offsetTop - 400;
         const height = sec.offsetHeight;
-
         if(top >= offset && top < offset + height){
             sec.classList.add("show");
         }
